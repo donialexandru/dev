@@ -1,0 +1,10 @@
+#!/usr/bin/env bash
+
+git clone --depth=1 git@github.com:ryanoasis/nerd-fonts.git ~/personal/nerd-fonts
+
+cd ~/personal/nerd-fonts
+
+./install.sh Meslo
+
+fc-cache -fv
+
