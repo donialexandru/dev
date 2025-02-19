@@ -64,9 +64,8 @@ addToPathFront $HOME/personal/sumneko/bin
 addToPathFront $HOME/.deno/bin
 addToPath $HOME/.cargo/bin
 addToPath $HOME/personal/ghostty/zig-out/bin
-addToPath $HOME/.local/personal
+addToPath $HOME/.local/scripts
 
 # thanks gt
 alias gt='NODE_OPTIONS="--no-deprecation" gt'
 
-source ~/.php_profile
