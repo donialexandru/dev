@@ -17,6 +17,9 @@ export N_PREFIX="$HOME/.local/n"
 export FLYCTL_INSTALL="/home/theprimeagen/.fly"
 export PATH="$FLYCTL_INSTALL/bin:$PATH"
 export DEV_ENV_HOME="$HOME/personal/dev"
+export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || printf %s "${XDG_CONFIG_HOME}/nvm")"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" # This loads nvm
+
 
 dev_env() {
 
