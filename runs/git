@@ -1,7 +1,6 @@
 #!/usr/bin/env bash
 
-sudo apt install git-all
-
+brew install git
 
 git config --global user.name "Alexandru Doni"
 git config --global user.email "donialexandru@gmail.com"
