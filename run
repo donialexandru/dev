@@ -31,7 +31,7 @@ execute() {
 log "$script_dir -- $filter"
 
 cd $script_dir
-scripts=$(find ./runs  -maxdepth 1 -mindepth 1  -executable -type f)
+scripts=$(gfind ./runs  -maxdepth 1 -mindepth 1  -executable -type f)
 
 for script in $scripts; do
     if echo "$script" | grep -qv "$filter"; then
