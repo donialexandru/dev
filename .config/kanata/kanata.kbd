@@ -1,0 +1,58 @@
+(defcfg
+  process-unmapped-keys yes
+)
+
+(defsrc
+q w e r t y u i o p
+caps a s d f g h j k l ;
+z x c v b n m , . /
+spc
+)
+
+(defvar
+ tap-time 200
+ hold-time 200
+)
+
+(defalias
+
+  ;; Space: tap = space, hold = num layer
+  spc-num (tap-hold $tap-time $hold-time spc (layer-while-held num))
+
+  ;; num layer: tap = 4, hold = right shift
+  four-rsft (tap-hold $tap-time $hold-time 4 rsft)
+
+  ;; existing mod-taps
+  a-mod (tap-hold $tap-time $hold-time a lctl)
+  s-mod (tap-hold $tap-time $hold-time s lalt)
+  d-mod (tap-hold $tap-time $hold-time d lmet)
+  f-mod (tap-hold $tap-time $hold-time f lsft)
+  j-mod (tap-hold $tap-time $hold-time j rsft)
+  k-mod (tap-hold $tap-time $hold-time k rmet)
+  l-mod (tap-hold $tap-time $hold-time l ralt)
+  ;-mod (tap-hold $tap-time $hold-time ; rctl)
+
+  ;; new: capslock = tap escape, hold = nav layer
+  caps-mod (tap-hold $tap-time $hold-time esc (layer-while-held nav))
+)
+
+(deflayer base
+ q w e r t y u i o p
+ @caps-mod @a-mod @s-mod @d-mod @f-mod g h @j-mod @k-mod @l-mod @;-mod
+ z x c v b n m , . /
+ @spc-num
+)
+
+(deflayer nav
+ q w e r t y u i o p
+ @caps-mod @a-mod @s-mod @d-mod @f-mod g ← ↓ ↑ → @;-mod
+ z x c v b n m , . /
+ @spc-num
+)
+
+(deflayer num
+ ` ' [ ] S-6 tab 7 8 9 bspc
+ @caps-mod - = S-9 S-0 S-8 spc @four-rsft 5 6 enter
+ S-1 S-2 S-3 S-4 S-5 0 1 2 3 S-7
+ @spc-num
+)
