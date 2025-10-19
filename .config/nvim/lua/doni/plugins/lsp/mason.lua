@@ -27,7 +27,6 @@ return {
 				"stylua",
 				"isort",
 				"black",
-				"pylint",
 				"eslint-lsp",
 			},
 		})
