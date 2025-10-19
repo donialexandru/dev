@@ -10,7 +10,7 @@ return {
 		local cmp_nvim_lsp = require("cmp_nvim_lsp")
 		local keymap = vim.keymap
 
-		-- Setup keymaps when LSP attaches
+		-- 🔧 Setup keymaps when LSP attaches
 		vim.api.nvim_create_autocmd("LspAttach", {
 			group = vim.api.nvim_create_augroup("UserLspConfig", {}),
 			callback = function(ev)
@@ -54,7 +54,7 @@ return {
 			end,
 		})
 
-		-- Configure diagnostic signs (new API)
+		-- 🧩 Configure diagnostic signs (new API)
 		vim.diagnostic.config({
 			signs = {
 				text = {
@@ -66,13 +66,25 @@ return {
 			},
 		})
 
-		-- Get capabilities from cmp-nvim-lsp
+		-- 💪 Capabilities from cmp-nvim-lsp
 		local capabilities = cmp_nvim_lsp.default_capabilities()
 
+		-- 🐍 PYRIGHT (Python)
 		vim.lsp.config("pyright", {
 			capabilities = capabilities,
 			before_init = function(_, config)
-				local root_dir = config.root_dir
+				local util = require("lspconfig.util")
+
+				-- Determine root dir safely
+				local root_dir =
+					util.root_pattern(".git", "pyproject.toml", "setup.py", "setup.cfg", "requirements.txt")(
+						vim.fn.getcwd()
+					)
+
+				if not root_dir then
+					root_dir = vim.fn.getcwd()
+				end
+
 				local venv_paths = {
 					root_dir .. "/env/bin/python",
 					root_dir .. "/.venv/bin/python",
@@ -82,10 +94,12 @@ return {
 				for _, path in ipairs(venv_paths) do
 					if vim.fn.filereadable(path) == 1 then
 						config.settings.python.pythonPath = path
-						print("Pyright using: " .. path) -- Debug message
-						break
+						print("✅ Pyright using: " .. path)
+						return
 					end
 				end
+
+				print("⚠️ No virtualenv found, using system python")
 			end,
 			settings = {
 				python = {
@@ -93,14 +107,14 @@ return {
 					analysis = {
 						autoSearchPaths = true,
 						useLibraryCodeForTypes = true,
-						diagnosticMode = "workspace", -- Changed from openFilesOnly
+						diagnosticMode = "workspace",
 						typeCheckingMode = "basic",
 					},
 				},
 			},
 		})
 
-		-- NEW API: Configure servers with custom settings
+		-- 🌙 LUA
 		vim.lsp.config("lua_ls", {
 			capabilities = capabilities,
 			settings = {
@@ -115,6 +129,7 @@ return {
 			},
 		})
 
+		-- 🧭 SVELTE
 		vim.lsp.config("svelte", {
 			capabilities = capabilities,
 			on_attach = function(client, bufnr)
@@ -127,11 +142,13 @@ return {
 			end,
 		})
 
+		-- 🔮 GRAPHQL
 		vim.lsp.config("graphql", {
 			capabilities = capabilities,
 			filetypes = { "graphql", "gql", "svelte", "typescriptreact", "javascriptreact" },
 		})
 
+		-- 🌐 EMMET
 		vim.lsp.config("emmet_ls", {
 			capabilities = capabilities,
 			filetypes = {
@@ -146,8 +163,7 @@ return {
 			},
 		})
 
-		-- NEW API: Enable all LSP servers
-		-- These will auto-start when you open matching filetypes
+		-- 🚀 Enable all LSP servers
 		local servers = {
 			"ts_ls",
 			"html",
