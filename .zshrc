@@ -108,6 +108,9 @@ source $ZSH/oh-my-zsh.sh
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 source ~/.zsh_profile
 
+# miniconda
+export PATH="$HOME/miniconda3/bin:$PATH"
+
 # bun completions
 [ -s "$HOME/.bun/_bun" ] && source "$HOME/.bun/_bun"
 
