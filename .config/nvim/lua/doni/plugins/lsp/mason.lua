@@ -1,34 +1,52 @@
 return {
-	"williamboman/mason.nvim",
-	dependencies = {
+	{
 		"williamboman/mason-lspconfig.nvim",
-		"WhoIsSethDaniel/mason-tool-installer.nvim",
-		"neovim/nvim-lspconfig",
-	},
-	config = function()
-		local mason = require("mason")
-		local mason_tool_installer = require("mason-tool-installer")
-
-		-- enable mason and configure icons
-		mason.setup({
-			ui = {
-				icons = {
-					package_installed = "✓",
-					package_pending = "➜",
-					package_uninstalled = "✗",
+		opts = {
+			-- list of servers for mason to install
+			ensure_installed = {
+				"ts_ls",
+				"html",
+				"cssls",
+				"tailwindcss",
+				"svelte",
+				"lua_ls",
+				"graphql",
+				"emmet_ls",
+				"prismals",
+				"pyright",
+				"eslint",
+			},
+		},
+		dependencies = {
+			{
+				"williamboman/mason.nvim",
+				opts = {
+					ui = {
+						icons = {
+							package_installed = "✓",
+							package_pending = "➜",
+							package_uninstalled = "✗",
+						},
+					},
 				},
 			},
-		})
-
-		-- Only install tools (formatters/linters), NOT LSP servers
-		mason_tool_installer.setup({
+			"neovim/nvim-lspconfig",
+		},
+	},
+	{
+		"WhoIsSethDaniel/mason-tool-installer.nvim",
+		opts = {
 			ensure_installed = {
-				"prettier",
-				"stylua",
-				"isort",
-				"black",
-				"eslint-lsp",
+				"prettier", -- prettier formatter
+				"stylua", -- lua formatter
+				"isort", -- python formatter
+				"black", -- python formatter
+				"pylint",
+				"eslint_d",
 			},
-		})
-	end,
+		},
+		dependencies = {
+			"williamboman/mason.nvim",
+		},
+	},
 }
