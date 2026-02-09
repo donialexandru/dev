@@ -1,10 +1,14 @@
 #!/usr/bin/env bash
 
-git clone --depth=1 git@github.com:ryanoasis/nerd-fonts.git ~/personal/nerd-fonts
+# git clone --depth=1 git@github.com:ryanoasis/nerd-fonts.git ~/personal/nerd-fonts
 
-cd ~/personal/nerd-fonts
+# cd ~/personal/nerd-fonts
 
-./install.sh Meslo
+# ./install.sh Meslo
 
-fc-cache -fv
+# fc-cache -fv
+
+# use brew
+brew install font-hack-nerd-font
+brew install font-meslo-lg-nerd-font
 
