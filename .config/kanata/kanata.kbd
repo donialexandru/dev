@@ -1,7 +1,6 @@
 (defcfg
   process-unmapped-keys yes
 )
-
 (defsrc
 q w e r t y u i o p
 caps a s d f g h j k l ;
@@ -10,8 +9,8 @@ spc
 )
 
 (defvar
- tap-time 200
- hold-time 200
+ tap-time 120
+ hold-time 160
 )
 
 (defalias
@@ -52,7 +51,7 @@ spc
 
 (deflayer num
  ` ' [ ] S-6 tab 7 8 9 bspc
- @caps-mod - = S-9 S-0 S-8 spc @four-rsft 5 6 enter
+ @caps-mod - = S-9 S-0 S-8 \ @four-rsft 5 6 enter
  S-1 S-2 S-3 S-4 S-5 0 1 2 3 S-7
  @spc-num
 )
