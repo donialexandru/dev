@@ -9,16 +9,9 @@ export GOPATH=$HOME/.local/go
 export GIT_EDITOR=$VIM
 export DENO_INSTALL="$HOME/.deno"
 export N_PREFIX="$HOME/.local/n"
-export FLYCTL_INSTALL="/home/theprimeagen/.fly"
-export PATH="$FLYCTL_INSTALL/bin:$PATH"
-export DEV_ENV_HOME="$HOME/personal/dev"
 export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || printf %s "${XDG_CONFIG_HOME}/nvm")"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" # This loads nvm
 
-
-dev_env() {
-
-}
 
 # Where should I put you?
 bindkey -s ^f "tmux-sessionizer\n"
@@ -44,7 +37,6 @@ addToPathFront() {
     fi
 }
 
-addToPathFront $HOME/.zig
 addToPathFront $HOME/.local/.npm-global/bin
 addToPathFront $HOME/.local/odin
 addToPathFront $HOME/.local/apps
@@ -52,17 +44,6 @@ addToPathFront $HOME/.local/scripts
 addToPathFront $HOME/.local/bin
 addToPathFront $HOME/.local/npm/bin
 addToPathFront $HOME/.local/n/bin/
-addToPathFront $HOME/.local/apps/
-addToPathFront $HOME/.local/zig-linux-x86_64-0.13.0
-
-# do i need this one?
-addToPathFront $HOME/.local/go/bin
-addToPathFront /usr/local/go/bin
-addToPathFront $HOME/personal/sumneko/bin
-addToPathFront $HOME/.deno/bin
-addToPath $HOME/.cargo/bin
-addToPath $HOME/personal/ghostty/zig-out/bin
-addToPath $HOME/.local/scripts
 
 # thanks gt
 alias gt='NODE_OPTIONS="--no-deprecation" gt'
