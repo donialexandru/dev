@@ -5,3 +5,5 @@ brew install git
 git config --global user.name "Alexandru Doni"
 git config --global user.email "donialexandru@gmail.com"
 git config --global init.defaultBranch main
+
+brew install gh
