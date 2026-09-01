@@ -2,7 +2,8 @@ vim.g.mapleader = " "
 
 local keymap = vim.keymap
 
-keymap.set("i", "kj", "<ESC>", { desc = "Exit insert mode with kj" })
+-- replace C-c with esc
+keymap.set("i", "<C-c>", "<Esc>")
 
 -- in visual mode move up/down a selected text
 keymap.set("v", "J", ":m '>+1<CR>gv=gv")
