@@ -38,3 +38,6 @@ keymap.set("n", "<leader>j", "<cmd>lprev<CR>zz", { desc = "Go to previous item i
 
 -- Makes the current file executable
 keymap.set("n", "<leader>x", "<cmd>!chmod +x %<CR>", { desc = "Makes the current file executable", silent = true })
+
+-- Save the buffer if there are changes
+keymap.set("n", "<leader>s", "<cmd>update<cr>", { desc = "Update/save the buffer" })
