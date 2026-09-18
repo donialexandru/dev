@@ -13,6 +13,8 @@ export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" # This loads nvm
 
 
+bindkey -v
+
 # Where should I put you?
 bindkey -s ^f "tmux-sessionizer\n"
 
