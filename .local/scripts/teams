@@ -1,0 +1,10 @@
+#!/bin/bash
+
+INTERVAL=5  # 4 minutes
+
+echo "This is the best script ever. Press Ctrl+C to stop."
+
+while true; do
+   osascript -e 'tell application "System Events" to key code 56'
+   sleep $INTERVAL
+done
